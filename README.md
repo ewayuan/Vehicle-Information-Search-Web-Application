@@ -10,7 +10,7 @@ Backend Setup:
 6, run the Project as a Springboot Application
 
 Frontend Setup:
-7, the front end in on: localhost:8080/html/login
+7, the front end in on: http://localhost:8080/html/logIn.html
 
 (Optional) Database setup:
 hostname: 35.222.149.109
