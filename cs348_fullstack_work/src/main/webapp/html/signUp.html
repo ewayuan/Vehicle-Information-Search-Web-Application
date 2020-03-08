@@ -1,0 +1,62 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../css/signUp.css">
+  <script src="../js/signUp.js"></script>
+
+	<title>Spring Boot AngularJS example</title>
+</head>
+
+<body ng-app="SignUpManagement" ng-controller="SignUpController" class="center justify-content-center">
+<div class="form-container">	
+  <form class="form-signin">
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Create an Account</h1>
+    
+    <!-- Sign In - username and password -->
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" ng-model="user.username">
+    <p class="mt-2 mb-2 warning" ng-show="usernameWarning">Username taken or invalid.</p>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" ng-model="user.password">
+    <label for="confirmPassword" class="sr-only">Confirm Password</label>
+    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required="" ng-model="confirmPassword">
+    <p class="mt-2 mb-2 warning" ng-show="passwordWarning">The passwords do not match.</p>
+    <!-- end -->
+
+    <!-- Role Radio Button -->
+    <div class="row" id="role">
+      <div class="form-check col-sm-6">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="buyerRadio" value="option1" checked>
+          <label class="form-check-label text-left" for="exampleRadios1">
+            Buyer
+          </label>
+      </div>
+      <div class="form-check col-sm-6">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="manufacturerRadio" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          Manufacturer
+        </label>
+      </div>
+    </div>
+    <p class="mt-2 mb-2 warning" ng-show="roleWarning">A role must be selected.</p>
+
+    <button class="btn btn-lg btn-success btn-block" type="submit" ng-click="submitUser()">Sign Up</button>
+
+  </form>
+</div>
+</body>
+</html>
+

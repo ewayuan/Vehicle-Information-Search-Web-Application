@@ -1,0 +1,64 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../css/logIn.css">
+  <script src="../js/logIn.js"></script>
+
+	<title>Spring Boot AngularJS example</title>
+</head>
+
+<body ng-app="LogInManagement" ng-controller="LogInController" class="center justify-content-center">
+<div class="form-container">	
+  <form class="form-signin">
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Welcome</h1>
+    
+    <!-- Sign In - username and password -->
+    <label for="Username" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" ng-model="inputUsername">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="inputPassword" required="">
+    <!-- end -->
+
+    <!-- Role Radio Button -->
+ <!--   <div class="row" id="role">
+      <div class="form-check col-sm-4">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label text-left" for="exampleRadios1">
+          Buyer
+        </label>
+      </div>
+      <div class="form-check col-sm-5">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          Manufacturer
+        </label>
+      </div>
+      <div class="form-check col-sm-2">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option3">
+        <label class="form-check-label" for="exampleRadios2">
+          Admin
+        </label>
+      </div>
+    </div>-->
+    <button class="btn btn-lg btn-success btn-block" type="submit" ng-click="logInUser()">Log in</button>
+
+    <p class="mt-5 mb-3 text-muted text-center">New to XXX? <a href="signUp.html">Join Now</a></p>
+     <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="wrongUserWarning">Username does not exist.</p>
+    <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="logInWarning">Failed to log in. Please try again.</p>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+    $scope.display = false;
+    $scope.year = 2020;
+
+    $scope.cars = [
+    	{year: 2019,
+    	 make: "Acura",
+    	 model: "ILX",
+    	 vehicleClass: "Compact",
+    	 engineSize: 2.4,
+    	 fuelConsumption: 9.9},
+    	{year: 2019,
+    	 make: "Acura",
+    	 model: "MDX SH-AWD A-SPEC",
+    	 vehicleClass: "SUV: Small",
+    	 engineSize: 3.5,
+    	 fuelConsumption: 12.2},
+    	{year: 2019,
+    	 make: "Acura",
+    	 model: "IMDX SH-AWD",
+    	 vehicleClass: "SUV: Small",
+    	 engineSize: 3.5,
+    	 fuelConsumption: 12.2}
+    ];
+
+    $scope.displayAll = function() {
+    	$scope.display = true;
+    }
+});
+</script>
+
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<button ng-click="displayAll()">Display All</button>
+		
+		<div class="container" ng-show="display">
+			<div class="row">
+				<div class="col-sm-2">
+				  	Year
+				</div>
+				<div class="col-sm-2">
+				  	make
+				</div>
+				<div class="col-sm-2">
+				  	Model
+				</div>
+				<div class="col-sm-2">
+					Vehicle Class
+				</div>
+				<div class="col-sm-2">
+					Engine Size
+				</div>
+				<div class="col-sm-2">
+					Fuel Consumption
+				</div>
+			</div>
+			<div class="row" ng-repeat="car in cars">
+				<div class="col-sm-2">
+				  	{{car.year}}
+				</div>
+				<div class="col-sm-2">
+				  	{{car.make}}
+				</div>
+				<div class="col-sm-2">
+				  	{{car.model}}
+				</div>
+				<div class="col-sm-2">
+					{{car.vehicleClass}}
+				</div>
+				<div class="col-sm-2">
+					{{car.engineSize}}
+				</div>
+				<div class="col-sm-2">
+					{{car.fuelConsumption}}
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
+
+
+
