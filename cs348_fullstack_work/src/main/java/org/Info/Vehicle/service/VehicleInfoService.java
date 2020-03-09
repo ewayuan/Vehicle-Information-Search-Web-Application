@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.Info.Vehicle.dao.VehicleInfoDao;
 import org.Info.Vehicle.model.VehicleInfo;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,4 +58,10 @@ public class VehicleInfoService {
 	public List<Float> getAllUniqueConsumptions() {
 		return vehicleInfoDao.getAllUniqueConsumptions();
 	}
+	
+	@Transactional
+	public List<VehicleInfo> searchBarFind(String model, int year,  int mid) {
+		return vehicleInfoDao.searchBarFind(model, year, mid);
+	}
+	
 }

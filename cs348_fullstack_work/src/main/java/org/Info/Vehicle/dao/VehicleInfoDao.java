@@ -20,4 +20,6 @@ public interface VehicleInfoDao {
 	public List<Integer> getAllUniqueYears();
 
 	public List<Float> getAllUniqueConsumptions();
+	
+	public List<VehicleInfo> searchBarFind(String model, int year,  int mid);
 }

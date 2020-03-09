@@ -33,7 +33,7 @@ public class Make{
 		this.make_name=make_name;
 	}
 	
-	public String getMake() {
+	public String getMakee() {
 		return this.make_name;
 	}
 	public void setMake(String make_name) {

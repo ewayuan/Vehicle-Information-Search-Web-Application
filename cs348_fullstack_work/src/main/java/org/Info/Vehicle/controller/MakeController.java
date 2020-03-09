@@ -16,35 +16,40 @@ import org.springframework.web.bind.annotation.RestController;
 public class MakeController {
 
 	@Autowired
-	MakeService manufactuterService;
+	MakeService makeService;
 
 	@RequestMapping(value = "/getAllMake", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Make> getAllMake(Model model) {
-		List<Make> listOfMake = manufactuterService.getAllMake();
+		List<Make> listOfMake = makeService.getAllMake();
 		model.addAttribute("make", new Make());
 		model.addAttribute("listOfMake", listOfMake);
 		return listOfMake;
 	}
 
 	@RequestMapping(value = "/getMake/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public void getMakeById(@PathVariable int id) {
-		manufactuterService.getMake(id);
+	public String getMakeById(@PathVariable int id) {
+		return makeService.getMake(id);
+	}
+	
+	@RequestMapping(value = "/getmid/{makename}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public int getMid(@PathVariable String makename) {
+		return makeService.getMid(makename);
 	}
 
 	@RequestMapping(value = "/addMake", method = RequestMethod.POST, headers = "Accept=application/json")
 	public Make addMake(@RequestBody Make manufactuter) {
-		return manufactuterService.addMake(manufactuter);
+		return makeService.addMake(manufactuter);
 
 	}
 
 	@RequestMapping(value = "/addMake", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public Make updateMake(@RequestBody Make manufactuter) {
-		return manufactuterService.updateMake(manufactuter); 
+		return makeService.updateMake(manufactuter); 
 
 	}	
 
 	@RequestMapping(value = "/deleteMake/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public void deleteMake(@PathVariable("id") int id) {
-		manufactuterService.deleteMake(id);
+		makeService.deleteMake(id);
 	}	
 }

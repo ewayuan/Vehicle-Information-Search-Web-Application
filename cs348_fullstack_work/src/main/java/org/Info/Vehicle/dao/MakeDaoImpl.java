@@ -24,10 +24,10 @@ public class MakeDaoImpl implements MakeDao{
 		return MakeList;
 	}
 
-	public Make getMake(int id) {
+	public String getMake(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Make Make = (Make) session.get(Make.class, id);
-		return Make;
+		Make m = (Make) session.get(Make.class, id);
+		return m.getMakee();
 	}
 
 	public Make addMake(Make Make) {
@@ -48,4 +48,17 @@ public class MakeDaoImpl implements MakeDao{
 			session.delete(p);
 		}
 	} 
+	
+	public int getmid(String makename) {		
+		Session session = this.sessionFactory.getCurrentSession();
+		String searchQ = "from Make WHERE make_name = '" + makename +"'";
+		List<Make> makeList = session.createQuery(searchQ).list();
+		Make topMake;
+		try {
+			topMake = makeList.get(0);
+		} catch(Exception e) {
+			topMake = null;
+		}
+		return topMake.getMid();
+	}
 }

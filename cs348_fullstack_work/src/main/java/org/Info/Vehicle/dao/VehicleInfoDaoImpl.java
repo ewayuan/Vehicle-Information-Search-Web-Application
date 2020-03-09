@@ -2,6 +2,8 @@ package org.Info.Vehicle.dao;
 
 import java.util.List;
 
+import javax.management.Query;
+
 import org.Info.Vehicle.model.VehicleInfo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -65,5 +67,13 @@ public class VehicleInfoDaoImpl implements VehicleInfoDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Float>  consumptionList = session.createQuery("SELECT DISTINCT comb_cons from VehicleInfo").list();
 		return consumptionList;
+	}
+	
+	public List<VehicleInfo> searchBarFind(String model, int year,  int mid) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String searchQ = "FROM VehicleInfo WHERE '"+ model +"' = 'All' or model = '" + model+
+				"' AND year = "+ year+" AND mid = "+mid;
+		List<VehicleInfo>  findList = session.createQuery(searchQ).list();
+		return findList;
 	}
 }

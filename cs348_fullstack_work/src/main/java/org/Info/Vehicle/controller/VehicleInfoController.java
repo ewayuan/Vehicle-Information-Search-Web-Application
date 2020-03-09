@@ -3,6 +3,7 @@ package org.Info.Vehicle.controller;
 import java.util.List;
 
 import org.Info.Vehicle.model.VehicleInfo;
+import org.Info.Vehicle.service.MakeService;
 import org.Info.Vehicle.service.VehicleInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class VehicleInfoController {
 
 	@Autowired
 	VehicleInfoService vehicleInfoService;
+	
+	@Autowired
+	MakeService makeService;
 
 	@RequestMapping(value = "/getAllVehicleInfo", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<VehicleInfo> getAllVehicleInfo(Model model) {
@@ -62,4 +66,12 @@ public class VehicleInfoController {
 	public List<Float> getAllUniqueConsumptions() {
 		return vehicleInfoService.getAllUniqueConsumptions();
 	}	
+	
+	@RequestMapping(value = "/searchBar/{model}/{year}/{makename}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<VehicleInfo> searchBarFind(@PathVariable String model, @PathVariable int year, @PathVariable  String makename) {
+		int mid = makeService.getMid(makename);
+		List<VehicleInfo> listOfVehicleInfo = vehicleInfoService.searchBarFind(model, year, mid);
+		return listOfVehicleInfo;
+	}
+
 }

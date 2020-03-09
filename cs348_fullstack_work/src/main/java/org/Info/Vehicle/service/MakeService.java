@@ -22,7 +22,7 @@ public class MakeService {
 	}
 
 	@Transactional
-	public Make getMake(int id) {
+	public String getMake(int id) {
 		return makeDao.getMake(id);
 	}
 
@@ -41,5 +41,10 @@ public class MakeService {
 	@Transactional
 	public void deleteMake(int id) {
 		makeDao.deleteMake(id);
+	}
+
+	@Transactional
+	public int getMid(String makename) {
+		return makeDao.getmid(makename);
 	}
 }
