@@ -38,8 +38,12 @@
             <div>{{model}}</div>
           </option>
         </select>
+        <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="selectModelWarning">
+          Model is a required field. Please select a model.
+        </p>
       </div>
     </div>
+
 
     <div class="row">
       <label class="col-sm-3 required">Year</label>     
@@ -50,6 +54,9 @@
               <div>{{year}}</div>
           </option>
         </select>
+        <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="selectYearWarning">
+          Year is a required field. Please select a year.
+        </p>
       </div>
     </div>
 
@@ -59,12 +66,12 @@
         <select class="custom-select d-block w-100" id="make">
           <option value="">Choose...</option>
           <option ng-repeat="make in makeList">
-              <div>{{make}}</div>
+            <div>{{make}}</div>
           </option>
         </select>
-        <div class="select-make-warning" style="display: none;">
-          Please select a make.
-        </div>
+        <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="selectMakeWarning">
+          Make is a required field. Please select a make.
+        </p>
       </div>
     </div>
 
@@ -74,7 +81,7 @@
         <select class="custom-select d-block w-100" id="priceFrom">
           <option value="">Choose...</option>
           <option ng-repeat="price in priceList">
-              <div>{{price}}</div>
+            <div>{{price}}</div>
           </option>
         </select>
         <div class="invalid-feedback ng-hide">
@@ -89,7 +96,7 @@
         <select class="custom-select d-block w-100" id="priceTo">
           <option value="">Choose...</option>
           <option ng-repeat="price in priceList">
-              <div>{{price}}</div>
+            <div>{{price}}</div>
           </option>
         </select>
         <div class="invalid-feedback ng-hide">
