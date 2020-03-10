@@ -28,7 +28,7 @@
 	<div class="header">
 	</div>
 
-  <div class="container center">
+  <div class="container center" ng-show="searchBar">
     <div class="row justify-content-center">
       <h1>Find Your Car</h1>
     </div>
@@ -114,5 +114,24 @@
     </div>
 
   </div>
+
+  <div class="container-fluid" ng-show="searchResult">
+
+    <div class="row text-center font-weight-bold" id="tableLabel">
+      <div class="col-sm-3">Year</div>
+      <div class="col-sm-3">Make</div>
+      <div class="col-sm-3">Model</div>
+      <div class="col-sm-3">Consumption</div>
+    </div>
+
+    <div class="row text-center" ng-repeat="result in resultList">
+      <div class="col-sm-3">{{result.year}}</div>
+      <div class="col-sm-3">{{result.mid}}</div>
+      <div class="col-sm-3">{{result.model}}</div>
+      <div class="col-sm-3">{{result.comb_cons}}</div>
+    </div>
+    
+  </div>
+
 </body>
 </html>

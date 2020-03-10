@@ -1,6 +1,6 @@
 //var app = angular.module("SignUpManagement", []);
 
-angular.module("myApp").controller("SignUpController", function($scope, $http) {
+angular.module("myApp").controller("SignUpController", function($scope, $http, $window) {
 	$scope.usernameWarning = false;
 	$scope.passwordWarning = false;
 	
@@ -39,6 +39,7 @@ angular.module("myApp").controller("SignUpController", function($scope, $http) {
 
 	$scope.submitUser = function() {
 		checkUserExists($scope.user.username);
+		//$scope.submitUser_backend($scope.user);
 	}
 
 
@@ -50,7 +51,7 @@ angular.module("myApp").controller("SignUpController", function($scope, $http) {
                 'Content-Type' : 'application/json'
             }
         }).then(function successCallback(response) {
-            if (response.data == true) {
+            if (response.data == false) {
             	$scope.wrongUserWarning = false;
             	$scope.getUserInfo();
             } else {
@@ -61,7 +62,7 @@ angular.module("myApp").controller("SignUpController", function($scope, $http) {
         });
 	}
 
-	$scope.submitUser_backend = function(user) {
+	$scope.submitUser_backend = function() {
          
         var method = "";
         var url = "";
@@ -72,11 +73,16 @@ angular.module("myApp").controller("SignUpController", function($scope, $http) {
         $http({
             method : method,
             url : url,
-            data : angular.toJson(user),
+            params : { usertype: $scope.user.roleType,
+            		   username: $scope.user.username,
+            		   password: $scope.user.password},
+            //data : angular.toJson(user),
             headers : {
                 'Content-Type' : 'application/json'
             }
         }).then(function successCallback(response) {
+        	alert("User " + $scope.user.username + " has been created successfully!");
+        	$window.location.href = '/html/logIn.html';
 		    console.log("New User Created Successfully.");
 	  	}, function errorCallback(response) {
 	     	console.log("Failed to Create New User.");

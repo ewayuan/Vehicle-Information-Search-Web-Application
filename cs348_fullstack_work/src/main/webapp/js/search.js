@@ -2,6 +2,9 @@
 
 //Controller Part
 angular.module("myApp").controller("SearchController", ['$scope', '$http', '$rootScope', '$window', function($scope, $http, $rootScope, $window) {
+    $scope.searchBar = true;
+    $scope.searchResult = false;
+
     $scope.modelList = ["All"];
     $scope.yearList = ["All"];
     $scope.makeList = ["All"];
@@ -81,9 +84,11 @@ angular.module("myApp").controller("SearchController", ['$scope', '$http', '$roo
             }
         }).then(function successCallback(response) {
             var resultList = response.data;
-            $rootScope.resultList = resultList;
-            $rootScope.$broadcast('sendSearchResult', resultList);
-            window.location.pathname = '/html/results.html';
+            $scope.resultList = resultList;
+            $scope.searchBar = false;
+            $scope.searchResult = true;
+            /*$rootScope.$broadcast('sendSearchResult', resultList);
+            window.location.pathname = '/html/results.html';*/
         }, function errorCallback(response) {
             console.log("ERROR: submitSeachRequest");
         });
