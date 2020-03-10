@@ -52,21 +52,21 @@ public class UserDaoImpl implements UserDao{
 	public User addUser(String username, String password, String usertype) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		System.out.println("hello");
-		System.out.println("username:"+username);
-		System.out.println("password:"+password);
-		System.out.println("usertype:"+usertype);
+//		System.out.println("hello");
+//		System.out.println("username:"+username);
+//		System.out.println("password:"+password);
+//		System.out.println("usertype:"+usertype);
 	    //Add new Employee object
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setUsertype(usertype);
-	    System.out.println("print username: "  +user.getUsername());
-	    System.out.println("print password: "  +user.getPassword());
-	    System.out.println("print usertype: "  +user.getUsertype());
+//	    System.out.println("print username: "  +user.getUsername());
+//	    System.out.println("print password: "  +user.getPassword());
+//	    System.out.println("print usertype: "  +user.getUsertype());
 	         
 	    session.save(user);
-	    session.getTransaction().commit();
+//	    session.getTransaction().commit();
 		return user;
 	    
 	}
