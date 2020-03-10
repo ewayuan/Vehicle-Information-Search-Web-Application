@@ -7,9 +7,11 @@ import org.Info.Vehicle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,9 +35,16 @@ public class UserController {
 		userService.getUser(id);
 	}
 
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST, headers = "Accept=application/json")
-	public User addUser(@RequestBody User user) {
-		return userService.addUser(user);
+	@RequestMapping(value = "/addUser", method = {RequestMethod.POST,RequestMethod.GET}, headers = "Accept=application/json")
+//	@PostMapping(path = "/addUser")
+	@ResponseBody
+	public User addUser(String usertype, @RequestParam(required=false) String username, @RequestParam(required=false) String password) {
+		// usage: http://localhost:8080/addUser?usertype="aaaa"&username="a"&password="bb"
+//		System.out.println("hello");
+//		System.out.println("username:"+username);
+//		System.out.println("password:"+password);
+//		System.out.println("usertype:"+usertype);
+		return userService.addUser(username, password, usertype);
 
 	}
 

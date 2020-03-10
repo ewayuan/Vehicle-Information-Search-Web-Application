@@ -25,16 +25,20 @@ public class User{
 
 	@Column(name="password")
 	String password;
+	
+	@Column(name="user_type")
+	String usertype;
 
 	public User() {
 		super();
 	}
 
-	public User(int uid, String username,String password) {
+	public User(int uid, String username,String password, String usertype) {
 		super();
 		this.uid = uid;
 		this.username = username;
 		this.password=password;
+		this.usertype = usertype;
 	}
 	
 	public String getUsername() {
@@ -55,5 +59,13 @@ public class User{
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
+	
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+	
 	
 }

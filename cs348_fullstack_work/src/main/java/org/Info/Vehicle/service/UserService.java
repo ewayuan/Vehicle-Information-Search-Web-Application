@@ -37,9 +37,8 @@ public class UserService {
 	}
 	
 	@Transactional
-	public User addUser(User user) {
-		userDao.addUser(user);
-		return user;
+	public User addUser(String username, String password, String usertype) {
+		return userDao.addUser(username, password, usertype);
 	}
 
 	@Transactional

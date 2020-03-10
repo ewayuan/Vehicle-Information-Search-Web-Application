@@ -13,9 +13,11 @@ public interface UserDao {
 	
 	public boolean checkUserValid(String username, String password);
 
-	public User addUser(User user);
+	public User addUser(String username, String password, String usertype);
 
 	public void updateUser(User user) ;
 
 	public void deleteUser(int id) ;
+	
+	
 }
