@@ -1,6 +1,5 @@
-var app = angular.module("LogInManagement", []);
-
-app.controller("LogInController", function($scope, $http, $rootScope) {
+//angular.module("LogInManagement", [])
+angular.module("myApp", []).controller("LogInController", function($scope, $http, $rootScope, $window) {
 	$scope.logInWarning = false;
 	$scope.wrongUserWarning = false;
 	$scope.user = {};
@@ -40,7 +39,7 @@ app.controller("LogInController", function($scope, $http, $rootScope) {
         }).then(function successCallback(response) {
             if (response.data == true) {
             	$scope.logInWarning = false;
-				window.location.pathname = '/html/search.html';
+				$window.location.href = '/html/search.html';
             } else {
             	$scope.logInWarning = true;
             }

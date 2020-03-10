@@ -1,0 +1,49 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../css/results.css">
+
+  <script src="../js/logIn.js"></script>
+  <script src="../js/results.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/signUp.js"></script>
+
+	<title>Spring Boot AngularJS example</title>
+</head>
+
+<body ng-app="myApp" ng-controller="ResultController">
+	
+	<div class="header">
+	</div>
+
+  <div class="container-fluid">
+
+    <div class="row text-center font-weight-bold" id="tableLabel">
+      <div class="col-sm-3">Year</div>
+      <div class="col-sm-3">Make</div>
+      <div class="col-sm-3">Model</div>
+      <div class="col-sm-3">Consumption</div>
+    </div>
+
+    <div class="row text-center" ng-repeat="result in resultList">
+      <div class="col-sm-3">{{result.year}}</div>
+      <div class="col-sm-3">{{result.mid}}</div>
+      <div class="col-sm-3">{{result.model}}</div>
+      <div class="col-sm-3">{{result.comb_cons}}</div>
+    </div>
+
+  </div>
+</body>
+</html>

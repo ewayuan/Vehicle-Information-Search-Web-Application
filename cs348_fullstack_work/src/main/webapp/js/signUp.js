@@ -1,7 +1,6 @@
+//var app = angular.module("SignUpManagement", []);
 
-var app = angular.module("SignUpManagement", []);
-
-app.controller("SignUpController", function($scope, $http) {
+angular.module("myApp").controller("SignUpController", function($scope, $http) {
 	$scope.usernameWarning = false;
 	$scope.passwordWarning = false;
 	
@@ -68,7 +67,7 @@ app.controller("SignUpController", function($scope, $http) {
         var url = "";
 
         method = "POST";
-        url = 'user/addNewUser';
+        url = '/addUser';
 
         $http({
             method : method,

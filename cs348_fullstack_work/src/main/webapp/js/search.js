@@ -1,13 +1,7 @@
-var app = angular.module("SearchManagement", []);
+//var app = angular.module("SearchManagement", []);
 
 //Controller Part
-app/*.config(function($routeProvider) {
-    $routeProvider
-    .when("/vehicleInfoSystem/search", {
-        templateUrl: "search.html",
-        controller: "SearchController"
-    });
-})*/.controller("SearchController", function($scope, $http) {
+angular.module("myApp").controller("SearchController", ['$scope', '$http', '$rootScope', '$window', function($scope, $http, $rootScope, $window) {
     $scope.modelList = ["All"];
     $scope.yearList = ["All"];
     $scope.makeList = ["All"];
@@ -69,7 +63,7 @@ app/*.config(function($routeProvider) {
         }).then(function successCallback(response) {
             var rawMakes = response.data;
             for (var i = 0; i < rawMakes.length; i++) {
-                $scope.makeList.push(rawMakes[i].make);
+                $scope.makeList.push(rawMakes[i].makee);
             }
         }, function errorCallback(response) {
             console.log("ERROR: getMakeList");
@@ -86,7 +80,10 @@ app/*.config(function($routeProvider) {
                 'Content-Type' : 'application/json'
             }
         }).then(function successCallback(response) {
-            /* broadcast to show the search results */
+            var resultList = response.data;
+            $rootScope.resultList = resultList;
+            $rootScope.$broadcast('sendSearchResult', resultList);
+            window.location.pathname = '/html/results.html';
         }, function errorCallback(response) {
             console.log("ERROR: submitSeachRequest");
         });
@@ -97,30 +94,32 @@ app/*.config(function($routeProvider) {
         $scope.resetData();
 
         var e = document.getElementById("model");
-        $scope.selecedModel = e.options[e.selectedIndex].value;
+        $scope.selecedModel = e.options[e.selectedIndex].value.trim();
         if ($scope.selecedModel == "") $scope.selectModelWarning = true;
 
         e = document.getElementById("year");
-        $scope.selecedYear = e.options[e.selectedIndex].value;
+        $scope.selecedYear = e.options[e.selectedIndex].value.trim();
         if ($scope.selecedYear == "") $scope.selectYearWarning = true;
 
         e = document.getElementById("make");
-        $scope.selecedMake = e.options[e.selectedIndex].value;
+        $scope.selecedMake = e.options[e.selectedIndex].value.trim();
         if ($scope.selecedMake == "") $scope.selectMakeWarning = true;
 
         /** Price is not available now - March 8th **/
         $scope.selecedPrice = [];
         e = document.getElementById("priceFrom");
-        $scope.selecedPrice[0] = (e.options[e.selectedIndex].value == "") ? null : e.options[e.selectedIndex].value;
+        $scope.selecedPrice[0] = (e.options[e.selectedIndex].value.trim() == "") ? null : e.options[e.selectedIndex].value.trim();
         
         e = document.getElementById("priceTo");
-        $scope.selecedPrice[1] = (e.options[e.selectedIndex].value == "") ? null : e.options[e.selectedIndex].value;
+        $scope.selecedPrice[1] = (e.options[e.selectedIndex].value.trim() == "") ? null : e.options[e.selectedIndex].value.trim();
 
         $scope.searchCriteria.model = $scope.selecedModel;
         $scope.searchCriteria.year = $scope.selecedYear;
         $scope.searchCriteria.make = $scope.selecedMake;
         $scope.searchCriteria.priceFrom = $scope.selecedPrice[0];
         $scope.searchCriteria.priceTo = $scope.selecedPrice[1];
+
+        submitSeachRequest();
     }
 
     $scope.resetData = function() {
@@ -128,5 +127,43 @@ app/*.config(function($routeProvider) {
         $scope.selectYearWarning = false;
         $scope.selectModelWarning = false;
     }
+
+    /*$rootScope.resultList = [
+                            {
+                                "vid": 1,
+                                "year": "2019",
+                                "mid": 1,
+                                "model": "M4 Cabriolet",
+                                "comb_cons": 12.7
+                            },
+                            {
+                                "vid": 2,
+                                "year": "2019",
+                                "mid": 1,
+                                "model": "M4 Cabriolet Competition",
+                                "comb_cons": 12.7
+                            },
+                            {
+                                "vid": 3,
+                                "year": "2019",
+                                "mid": 1,
+                                "model": "M4 Coupe",
+                                "comb_cons": 12.6
+                            },
+                            {
+                                "vid": 4,
+                                "year": "2019",
+                                "mid": 1,
+                                "model": "M4 CS",
+                                "comb_cons": 12.6
+                            },
+                            {
+                                "vid": 5,
+                                "year": "2019",
+                                "mid": 1,
+                                "model": "X3 M40i",
+                                "comb_cons": 8.7
+                            }
+                        ];*/
   
-});
+}]);
