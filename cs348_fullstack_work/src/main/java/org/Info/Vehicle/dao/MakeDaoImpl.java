@@ -49,7 +49,10 @@ public class MakeDaoImpl implements MakeDao{
 		}
 	} 
 	
-	public int getmid(String makename) {		
+	public int getmid(String makename) {
+		if (makename.equals("All")) {
+			return 0;
+		}
 		Session session = this.sessionFactory.getCurrentSession();
 		String searchQ = "from Make WHERE make_name = '" + makename +"'";
 		List<Make> makeList = session.createQuery(searchQ).list();
