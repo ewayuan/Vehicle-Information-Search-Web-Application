@@ -35,14 +35,14 @@ Data source:
 2. Car Picture Dataset:
    (https://ai.stanford.edu/~jkrause/cars/car_dataset.html)
 
-####Preprocess of Fuel Consumption Ratings:
+###Preprocess of Fuel Consumption Ratings:
 There are more than desired columns in this dataset than our application supports.  For current features, only Make, Model, Year, Combined_consumptions are needed.  We only use this subset of the whole dataset for production.
 
-####Preprocess of Picture Dataset:
+###Preprocess of Picture Dataset:
 There are two files ”cars_train_annos.mat” for annotation of each picture, and “cars_meat.mat” including pictures of cars.  Each annotation can be scraped into Make, Model and Year of each car corresponding to attributes of the relation VehicleInfo.
 
 
-#### Upload data to database:
+### Upload data to database:
    We use MySQL database supported on GCP: 
  -	To upload data into database:
  -	Download the xlsx file from the link.
