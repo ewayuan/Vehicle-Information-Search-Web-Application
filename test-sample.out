@@ -1,0 +1,39 @@
+1. 
+uid	username	password	user_type
+4	x558li	nancy	Admin
+
+2. 
+uid	username	password	user_type
+4	x558li	nancy	Admin
+
+3. 
+uid	vid	YEAR	model	comb_cons
+8	1	2019	M4 Cabriolet	12.7
+8	2	2019	M4 Cabriolet Competition	12.7
+8	3	2019	M4 Coupe	12.6
+
+4. 
+make_name
+Audi
+BMW
+Mercedes-Benz
+
+5. 
+model
+M4 Cabriolet
+M4 Cabriolet Competition
+M4 Coupe
+M4 CS
+X3 M40i
+
+6.
+ERROR
+
+7.
+ERROR
+
+8.
+ERROR
+
+9.
+ERROR
