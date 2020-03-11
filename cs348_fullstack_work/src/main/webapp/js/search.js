@@ -6,7 +6,7 @@ angular.module("myApp").controller("SearchController", ['$scope', '$http', '$roo
     $scope.searchResult = false;
 
     $scope.modelList = ["All"];
-    $scope.yearList = ["All"];
+    $scope.yearList = [];
     $scope.makeList = ["All"];
     $scope.priceList = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
 
@@ -132,6 +132,16 @@ angular.module("myApp").controller("SearchController", ['$scope', '$http', '$roo
         $scope.selectYearWarning = false;
         $scope.selectModelWarning = false;
     }
+
+    $scope.deleteUser = function() {
+        alert("Are you sure you want to delete your account?");
+    }
+
+    $("#deleteComfirmation .modal-footer button").on('click', function(event) {
+      var button = $(event.target); // The clicked button
+      var label  = button[0].innerText;
+      deleteMyAccount();
+    });
 
     /*$rootScope.resultList = [
                             {
