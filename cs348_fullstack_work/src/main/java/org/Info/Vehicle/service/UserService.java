@@ -51,4 +51,14 @@ public class UserService {
 	public void deleteUser(int id) {
 		userDao.deleteUser(id);
 	}
+
+	@Transactional
+	public void updateUsername(int uid, String newUsername) {
+		userDao.updateUsername(uid, newUsername);
+	}
+
+	@Transactional
+	public void updatePassword(int uid, String newPassword) {
+		userDao.updatePassword(uid, newPassword);
+	}
 }

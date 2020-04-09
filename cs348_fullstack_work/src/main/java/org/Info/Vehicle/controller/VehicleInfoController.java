@@ -57,6 +57,12 @@ public class VehicleInfoController {
 		return vehicleInfoService.getAllUniqueModels();
 	}	
 	
+	@RequestMapping(value = "/makeGetModelsInfo/{makeName}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<VehicleInfo> makeGetModelsInfo(@PathVariable("makeName") String makeName) {
+		int mid = makeService.getMid(makeName);
+		return vehicleInfoService.makeGetModelsInfo(mid);
+	}	
+	
 	@RequestMapping(value = "/allUniqueYears", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Integer> getAllUniqueYears() {
 		return vehicleInfoService.getAllUniqueYears();

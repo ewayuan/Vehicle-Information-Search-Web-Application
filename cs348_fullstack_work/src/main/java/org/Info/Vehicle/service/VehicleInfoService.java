@@ -63,5 +63,11 @@ public class VehicleInfoService {
 	public List<VehicleInfo> searchBarFind(String model, int year,  int mid) {
 		return vehicleInfoDao.searchBarFind(model, year, mid);
 	}
+
+	@Transactional
+	public List<VehicleInfo> makeGetModelsInfo(int mid) {
+		return vehicleInfoDao.makeGetModelsInfo(mid);
+	}
+
 	
 }

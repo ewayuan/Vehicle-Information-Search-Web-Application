@@ -82,6 +82,23 @@ public class UserDaoImpl implements UserDao{
 		if (null != p) {
 			session.delete(p);
 		}
+	}
+
+	
+	public void updateUsername(int uid, String newUsername) {
+		Session session = this.sessionFactory.getCurrentSession();
+		User currentUser = getUser(uid);
+		currentUser.setUsername(newUsername);
+	    session.save(currentUser);
+	}
+
+	
+	public void updatePassword(int uid, String newPassword) {
+		Session session = this.sessionFactory.getCurrentSession();
+		User currentUser = getUser(uid);
+		currentUser.setPassword(newPassword);
+//		currentUser.password = newPassword;
+	    session.save(currentUser);
 	} 
 	
 }

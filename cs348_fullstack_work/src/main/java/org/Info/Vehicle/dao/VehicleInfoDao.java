@@ -22,4 +22,6 @@ public interface VehicleInfoDao {
 	public List<Float> getAllUniqueConsumptions();
 	
 	public List<VehicleInfo> searchBarFind(String model, int year,  int mid);
+
+	public List<VehicleInfo> makeGetModelsInfo(int mid);
 }

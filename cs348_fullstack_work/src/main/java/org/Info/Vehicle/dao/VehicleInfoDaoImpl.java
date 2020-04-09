@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.Info.Vehicle.dao.MakeDao;
 
 @Repository
 public class VehicleInfoDaoImpl implements VehicleInfoDao{
@@ -75,5 +76,12 @@ public class VehicleInfoDaoImpl implements VehicleInfoDao{
 				"' )AND('"+year+"'= 'All' or year = "+ year+" )AND("+mid +"= 0 or mid = "+mid +")";
 		List<VehicleInfo>  findList = session.createQuery(searchQ).list();
 		return findList;
+	}
+	
+	public List<VehicleInfo> makeGetModelsInfo(int mid) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String searchQ = "FROM VehicleInfo WHERE mid = " + mid;  
+		List<VehicleInfo>  infoList = session.createQuery(searchQ).list();
+		return infoList;
 	}
 }

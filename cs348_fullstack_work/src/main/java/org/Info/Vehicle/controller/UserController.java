@@ -54,6 +54,17 @@ public class UserController {
 
 	}	
 
+	@PostMapping(value = "/updateUsername/{uid}/{newUsername}")
+	public void updateUsername(@PathVariable("uid") int uid, @PathVariable("newUsername") String newUsername)  {
+		userService.updateUsername(uid, newUsername); 
+
+	}
+	
+	@PostMapping(value = "/updatePassword/{uid}/{newPassword}")
+    public void updatePassword(@PathVariable("uid") int uid, @PathVariable("newPassword") String newPassword) { 
+		userService.updatePassword(uid, newPassword); 
+	}	
+	
 	@RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public void deleteUser(@PathVariable("id") int id) {
 		userService.deleteUser(id);
