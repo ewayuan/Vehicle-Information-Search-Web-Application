@@ -72,9 +72,12 @@ public class VehicleInfoDaoImpl implements VehicleInfoDao{
 	
 	public List<VehicleInfo> searchBarFind(String model, int year,  int mid) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String searchQ = "FROM VehicleInfo WHERE ('"+ model +"' = 'All' or model = '" + model+
-				"' )AND('"+year+"'= 'All' or year = "+ year+" )AND("+mid +"= 0 or mid = "+mid +")";
-		List<VehicleInfo>  findList = session.createQuery(searchQ).list();
+		//String searchQ = "FROM VehicleInfo WHERE ('"+ model +"' = 'All' or model = '" + model+
+		//		"' )AND('"+year+"'= 'All' or year = "+ year+" )AND("+mid +"= 0 or mid = "+mid +")";    
+		String searchSQLquery = "select v.Year,v.mid,v.model,v.VehicleClass,v.EngineSize,v.Cylinders,v.FuelType,v.City,v.Hwy,v.Comb,v.CO2Rating,v.SmogRating,v.vid,make_name FROM VehicleInfo as v left join Make as m on v.mid=m.mid WHERE ('"+ model +"' = 'All' or model = '" + model+
+				"' )AND('"+year+"'= 'All' or year = "+ year+" )AND("+mid +"= 0 or v.mid = "+mid +")";
+		//List<VehicleInfo>  findList = session.createQuery(searchQ).list();
+		List<VehicleInfo>  findList = session.createSQLQuery(searchSQLquery).addEntity(VehicleInfo.class).list();
 		return findList;
 	}
 	

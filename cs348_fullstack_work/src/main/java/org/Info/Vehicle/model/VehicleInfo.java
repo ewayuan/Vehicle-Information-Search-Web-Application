@@ -13,24 +13,52 @@ import javax.persistence.Table;
 @Table(name="VehicleInfo")
 public class VehicleInfo{
 
-	@Id
-	@Column(name="vid")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int vid;
-
 	@Column(name="Year")
 	String year; 
 
 	@Column(name="mid")
 	int mid; 
 
-	@Column(name="Model")
+	@Column(name="model")
 	String model;
 	
+	@Column(name="VehicleClass")
+	String VehicleClass;
+	
+	@Column(name="EngineSize")
+    float EngineSize;
+	
+	@Column(name="Cylinders")
+	int Cylinders;
+	
+	@Column(name="FuelType")
+    String FuelType;
+	
+	@Column(name="City")
+    float City;
+	
+	@Column(name="Hwy")
+    float Hwy;
+		
 	@Column(name="Comb")
 	float Comb;
-	
 
+	@Column(name="CO2Rating")
+    int CO2Rating;
+	
+	@Column(name="SmogRating")
+	int SmogRating;		
+
+	@Id
+	@Column(name="vid")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	int vid;
+
+	//@Coulumn(name="imgUrl")
+	//String imgUrl;
+
+	@Column(name="make_name")
+	String make_name;
 	
 	public VehicleInfo(int vid, String year, int mid, String model, float Comb) {
 		super();
