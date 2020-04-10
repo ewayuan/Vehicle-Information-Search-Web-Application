@@ -27,12 +27,12 @@ public class VehicleInfo{
 	@Column(name="Model")
 	String model;
 	
-	@Column(name="Comb_Cons")
-	float comb_cons;
+	@Column(name="Comb")
+	float Comb;
 	
 
 	
-	public VehicleInfo(int vid, String year, int mid, String model, float comb_cons) {
+	public VehicleInfo(int vid, String year, int mid, String model, float Comb) {
 		super();
 	}
 	public VehicleInfo() {
@@ -41,7 +41,7 @@ public class VehicleInfo{
 		this.year = year; 
 		this.mid = mid; 
 		this.model = model; 
-		this.comb_cons = comb_cons;
+		this.Comb = Comb;
 	}
 	public int getVid() {
 		return this.vid;
@@ -60,7 +60,7 @@ public class VehicleInfo{
 	}
 
 	public float getComb_cons() {
-		return this.comb_cons;
+		return this.Comb;
 	}
 
  	public void setVid(int vid) {
@@ -79,8 +79,8 @@ public class VehicleInfo{
 		this.model = model;
 	}
 
-	public void setComb_cons(float comb_cons) {
-		this.comb_cons = comb_cons;
+	public void setComb_cons(float Comb) {
+		this.Comb = Comb;
 	}
 	
 }
