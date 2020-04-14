@@ -31,8 +31,8 @@ public class UserController {
 
 
 	@RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public void getUserById(@PathVariable int id) {
-		userService.getUser(id);
+	public User getUserById(@PathVariable int id) {
+		return userService.getUser(id);
 	}
 
 	@RequestMapping(value = "/addUser", method = {RequestMethod.POST,RequestMethod.GET}, headers = "Accept=application/json")

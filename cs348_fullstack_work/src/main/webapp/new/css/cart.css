@@ -1,0 +1,16 @@
+table#cart {
+    width: 75%;
+    margin-bottom: 50px;
+}
+
+.center {
+	margin: auto;
+    width: 50%; 
+    padding: 10px;
+}
+
+.delete-btn {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}

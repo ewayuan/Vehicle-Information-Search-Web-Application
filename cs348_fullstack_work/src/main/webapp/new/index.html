@@ -1,0 +1,55 @@
+<html>
+<head>
+  <base href="/">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-css/1.0.8/angular-css.min.js"></script>
+  
+  <!--stylesheet-->
+  <link rel="stylesheet" type="text/css" href="new/css/app.css">
+  <link rel="stylesheet" type="text/css" href="new/css/search.css">
+
+  <!--JS files-->
+  <script src="new/app.js"></script>
+  <script src="new/js/logIn.js"></script>
+  <script src="new/js/search.js"></script>
+  <script src="new/js/cart.js"></script>
+  <script src="new/js/user.js"></script>
+  <script src="new/js/signUp.js"></script>
+
+	<title>Find Your Car</title>
+</head>
+
+
+<body ng-app="myApp">
+	
+	<div class="header">
+    <div class="row">
+      <a class="col-sm-3" href="new/index.html/#search">Search</a>
+      <a class="col-sm-3" href="new/index.html/#logIn">Log In</a>
+      <a class="col-sm-3" href="new/index.html/#user">User</a>
+      <a class="col-sm-3" href="new/index.html/#cart">Cart</a> 
+    </div>
+	</div>
+
+  <div ng-view></div>
+
+</body>
+</html>

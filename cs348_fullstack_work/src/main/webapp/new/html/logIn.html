@@ -1,0 +1,21 @@
+<div class="center justify-content-center">
+<div class="form-container">	
+  <form class="form-signin">
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Welcome</h1>
+    
+    <!-- Sign In - username and password -->
+    <label for="Username" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" ng-model="inputUsername">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="inputPassword" required="">
+    <!-- end -->
+
+    <button class="btn btn-lg btn-success btn-block" type="submit" ng-click="logInUser()">Log in</button>
+
+    <p class="mt-5 mb-3 text-muted text-center">New to XXX? <a href="new/index.html/#signUp">Join Now</a></p>
+    <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="wrongUserWarning">Username does not exist.</p>
+    <p class="mt-2 mb-2 text-center" style="color: red;" ng-show="logInWarning">Failed to log in. Please try again.</p>
+  </form>
+</div>
+</div>

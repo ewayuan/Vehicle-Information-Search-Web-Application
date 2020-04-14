@@ -1,0 +1,32 @@
+.row {
+    margin-bottom: 50px;
+    margin-left: unset;
+    margin-right: unset;
+}
+
+.form-user {
+	margin-top: 5px;
+}
+
+.form-user .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+}
+
+.change {
+	color: white;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.change:hover {
+	color: #d0dae4;
+}
+
+.btn-change {
+	width: 50%;
+}
