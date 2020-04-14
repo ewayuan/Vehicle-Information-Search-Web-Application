@@ -3,6 +3,11 @@ angular.module("myApp")
 	function($scope, $http, $rootScope, $window) {
 		console.log("SearchController");
 
+		if (!$rootScope.modelList) {
+			$rootScope.modelList = ["All"];;
+		} 
+		$scope.modelList = $rootScope.modelList;
+	
 		$scope.searchBar = true;
     	$scope.searchResult = false;
     	$scope.userID = $rootScope.userID;
@@ -10,9 +15,8 @@ angular.module("myApp")
 	    $scope.searchBar = true;
 	    $scope.searchResult = false;
 
-	    $scope.modelList = ["All"];
-	    $scope.yearList = [];
 	    $scope.makeList = ["All"];
+	    $scope.yearList = [];
 	    $scope.priceList = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
 
 	    $scope.searchCriteria = {};
@@ -22,8 +26,17 @@ angular.module("myApp")
 	    $scope.selectModelWarning = false;
 
 	    getYearList();
-	    getModelList();
 	    getMakeList();
+	    getModelList();
+	    //getModelList($scope.searchCriteria.make);
+
+
+	    /*$("#make").change(function() {
+	        var val = $(this).val();
+	        $scope.getModelList(val.trim());
+	        location.reload();
+	        //$("#model").html("<option ng-repeat='model in modelList'><div>{{model}}</div></option>");
+	    });*/
 
 	    function getYearList() {
 	        $http({
@@ -59,7 +72,23 @@ angular.module("myApp")
 	        });
 	    }
 
-	    
+	  /*$scope.getModelList = function(make) {
+	        $http({
+	            method : "GET",
+	            url : '/makeGetModelsInfo/' + make,
+	            headers : {
+	                'Content-Type' : 'application/json'
+	            }
+	        }).then(function successCallback(response) {
+	            var rawModels = response.data;
+	            for (var i = 0; i < rawModels.length; i++) {
+	                $scope.modelList.push(rawModels[i]);
+	            }
+	            $rootScope.modelList = $scope.modelList;
+	        }, function errorCallback(response) {
+	            console.log("ERROR: getModelList");
+	        });
+	    }*/
 
 	    function getMakeList() {
 	        $http({
