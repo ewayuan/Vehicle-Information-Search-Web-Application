@@ -87,8 +87,9 @@ public class VehicleInfoController {
 	
 	@RequestMapping(value = "/uidFindVehicleInfos/{uid}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<VehicleInfo> uidFindVehicleInfos(@PathVariable int uid) {
-		int cid = buyerService.getCid(uid);
-		List<VehicleInfo> listOfVehicleInfo = vehicleInfoService.uidFindVehicleInfos(cid);
+		//int cid = buyerService.getCid(uid);
+		//List<VehicleInfo> listOfVehicleInfo = vehicleInfoService.uidFindVehicleInfos(cid);
+		List<VehicleInfo> listOfVehicleInfo = vehicleInfoService.uidFindVehicleInfos(uid);
 		return listOfVehicleInfo;
 	}
 	
