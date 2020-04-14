@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+  <h1>My Cart</h1>
+</div>
+
+<div class="container-fluid">
+  <table id="cart" class="center table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Consumption</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in itemList">
+        <td><input type="checkbox" value={{item.vid}}></td>
+        <td>{{item.year}}</td>
+        <td>{{item.mid}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.comb_cons}}</td>
+      </tr>
+    </tbody>   
+  </table>
+  
+  <div class="row justify-content-center">
+      <button type="button" class="btn btn-outline-success delete-btn" ng-click="deleteItem()">Remove from Cart</button>
+  </div>
+</div>

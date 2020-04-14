@@ -1,0 +1,93 @@
+<div class="center justify-content-center">
+  		
+    <h1 class="h3 mb-3 font-weight-normal text-center">User Profile {{userInfo.username}}</h1>
+    	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3" style="background: green;">
+				<div class="row">
+					<button class="btn change" ng-click='changeType("pwd")'>Change Password</button>
+				</div>
+				<div class="row">
+					<button class="btn change" ng-click='changeType("username")'>Change Username</button>
+				</div>
+				<div>
+					<button class="btn change" data-toggle="modal" data-target="#deleteComfirmation">Delete My Account</button>
+				</div>
+
+			</div>
+
+			<div class="form-container col-sm-9">
+
+				<!--<form class="form-userInfo" ng-show="showUserInfo">
+					<div class="form-group row">
+					  <label class="control-label col-sm-2">Username:</label>
+					  <div class="col-sm-10">
+					    <input type="text" class="form-control" placeholder="{{user.username}}" disabled>
+					  </div>
+					</div>
+					<div class="form-group row">
+					  <label class="control-label col-sm-2">User Type:</label>
+					  <div class="col-sm-10">          
+					    <input type="text" class="form-control" placeholder="{{user.type}}" disabled>
+					  </div>
+					</div>
+				</form> -->
+
+
+	      		<form class="form-user" ng-show="changePwd">
+	      			<!-- Sign In - username and password -->
+					
+					<label for="inputPassword" class="sr-only">New Password</label>
+					<input type="password" id="inputPassword" class="form-control" placeholder="New Password" required="" ng-model="newPassword">
+					<label for="confirmPassword" class="sr-only">Confirm Password</label>
+					<input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required="" ng-model="confirmPassword">
+					<p class="mt-2 mb-2 warning" ng-show="passwordWarning">The passwords do not match.</p>
+
+					<!-- end <label for="inputUsername" class="sr-only">Username</label>
+					<input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" ng-model="user.username"> <p class="mt-2 mb-2 warning" ng-show="usernameWarning">Username taken or invalid.</p>-->
+
+					<button class="center btn btn-lg btn-success btn-block btn-change" type="submit" ng-click='changeUserInfo("pwd", newPassword)'>Change</button>
+	  			</form>
+
+	  			<form class="form-user" ng-show="changeUsername">
+	      			<!-- Sign In - username and password  -->
+					
+					<label for="inputPassword" class="sr-only">New Username</label>
+					<input type="text" class="form-control" placeholder="{{userInfo.username}}" disabled>
+					<label for="confirmPassword" class="sr-only">Confirm Password</label>
+					<input id="confirmPassword" class="form-control" placeholder="New Username" required="" ng-model="newUsername">
+					<p class="mt-2 mb-2 warning" ng-show="passwordWarning">The passwords do not match.</p>
+
+					<!-- end <label for="inputUsername" class="sr-only">Username</label>
+					<input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" ng-model="user.username"> <p class="mt-2 mb-2 warning" ng-show="usernameWarning">Username taken or invalid.</p>-->
+
+					<button class="center btn btn-lg btn-success btn-block btn-change" type="submit" ng-click='changeUserInfo("username", newUsername)'>Change</button>
+	  			</form>
+	  		</div>
+	  	</div>
+
+	</div>
+	<div id="deleteComfirmation" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirmation</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete your account?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="deleteUser()">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ 
