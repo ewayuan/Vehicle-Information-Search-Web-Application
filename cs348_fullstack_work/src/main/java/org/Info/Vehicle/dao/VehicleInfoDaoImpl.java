@@ -80,8 +80,8 @@ public class VehicleInfoDaoImpl implements VehicleInfoDao{
 	
 	public List<VehicleInfo> makeGetModelsInfo(int mid) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String searchQ = "FROM VehicleInfo WHERE mid = " + mid;  
-		List<VehicleInfo>  infoList = session.createQuery(searchQ).list();
+		String searchQ = "select * FROM VehicleInfo WHERE mid = " + mid;  
+		List<VehicleInfo>  infoList = session.createSQLQuery(searchQ).list();
 		return infoList;
 	}
 	
