@@ -79,7 +79,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/checkUserValid/{username}/{password}", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
-	public Boolean checkUserValid(@PathVariable String username, @PathVariable String password) {
+	public int checkUserValid(@PathVariable String username, @PathVariable String password) {
 	    return userService.checkUserValid(username, password);
 	}
 

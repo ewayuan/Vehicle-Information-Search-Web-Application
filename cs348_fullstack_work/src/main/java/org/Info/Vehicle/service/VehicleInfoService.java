@@ -69,5 +69,10 @@ public class VehicleInfoService {
 		return vehicleInfoDao.makeGetModelsInfo(mid);
 	}
 
+	@Transactional
+	public List<VehicleInfo> uidFindVehicleInfos(int cid) {
+		return vehicleInfoDao.uidFindVehicleInfos(cid);
+	}
+
 	
 }

@@ -3,6 +3,7 @@ package org.Info.Vehicle.controller;
 import java.util.List;
 
 import org.Info.Vehicle.model.VehicleInfo;
+import org.Info.Vehicle.service.BuyerService;
 import org.Info.Vehicle.service.MakeService;
 import org.Info.Vehicle.service.VehicleInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class VehicleInfoController {
 	
 	@Autowired
 	MakeService makeService;
+	
+	@Autowired
+	BuyerService buyerService;
 
 	@RequestMapping(value = "/getAllVehicleInfo", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<VehicleInfo> getAllVehicleInfo(Model model) {
@@ -80,4 +84,12 @@ public class VehicleInfoController {
 		return listOfVehicleInfo;
 	}
 
+	
+	@RequestMapping(value = "/uidFindVehicleInfos/{uid}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<VehicleInfo> uidFindVehicleInfos(@PathVariable int uid) {
+		int cid = buyerService.getCid(uid);
+		List<VehicleInfo> listOfVehicleInfo = vehicleInfoService.uidFindVehicleInfos(cid);
+		return listOfVehicleInfo;
+	}
+	
 }

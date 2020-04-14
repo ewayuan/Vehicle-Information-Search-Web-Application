@@ -49,4 +49,9 @@ public class BuyerController {
 	public void deleteBuyer(@PathVariable("id") int id) {
 		buyerService.deleteBuyer(id);
 	}	
+	
+	@RequestMapping(value = "/getCid/{uid}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public int getCid(@PathVariable int uid) {
+		return buyerService.getCid(uid);
+	}
 }

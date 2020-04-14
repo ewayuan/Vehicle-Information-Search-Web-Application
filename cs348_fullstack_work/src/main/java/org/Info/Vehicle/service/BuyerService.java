@@ -1,9 +1,7 @@
 package org.Info.Vehicle.service;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.Info.Vehicle.dao.BuyerDao;
 import org.Info.Vehicle.model.Buyer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +40,12 @@ public class BuyerService {
 	public void deleteBuyer(int id) {
 		BuyerDao.deleteBuyer(id);
 	}
+
+	@Transactional
+	public int getCid(int uid) {
+		return BuyerDao.getCid(uid);
+	}
+
 }
+
+

@@ -3,6 +3,7 @@ package org.Info.Vehicle.dao;
 import java.util.List;
 
 import org.Info.Vehicle.model.Buyer;
+import org.Info.Vehicle.model.Make;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +49,17 @@ public class BuyerDaoImpl implements BuyerDao{
 			session.delete(p);
 		}
 	} 
+	
+	public int getCid(int uid) {
+		Session session = this.sessionFactory.getCurrentSession();
+		String searchQ = "from Buyer WHERE uid = " + uid;
+		List<Buyer> bList = session.createQuery(searchQ).list();
+		Buyer b;
+		try {
+			b = bList.get(0);
+		} catch(Exception e) {
+			b = null;
+		}
+		return b.getCid();
+	}
 }

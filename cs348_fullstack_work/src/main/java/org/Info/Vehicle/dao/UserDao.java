@@ -11,7 +11,7 @@ public interface UserDao {
 	
 	public boolean checkUserExist(String username);
 	
-	public boolean checkUserValid(String username, String password);
+	public int checkUserValid(String username, String password);
 
 	public User addUser(String username, String password, String usertype);
 

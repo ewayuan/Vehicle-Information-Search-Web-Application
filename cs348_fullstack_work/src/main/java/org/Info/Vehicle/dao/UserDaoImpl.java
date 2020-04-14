@@ -41,11 +41,14 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 
-	public boolean checkUserValid(String username, String password) {
+	public int checkUserValid(String username, String password) {
 		Session session = this.sessionFactory.getCurrentSession();
 //		User user = (User) session.get(User.class, username);
 		List<User>  userList = session.createQuery("FROM User u WHERE u.username = :user AND  u.password = :password" ).setParameter("user", username).setParameter("password", password).list();
-		return !userList.isEmpty();
+		if (userList.isEmpty()) {
+			return -1;
+		} 
+		return userList.get(0).getUid();
 	    
 	}
 	

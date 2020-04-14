@@ -14,4 +14,6 @@ public interface BuyerDao {
 	public void updateBuyer(Buyer customer) ;
 
 	public void deleteBuyer(int id) ;
+	
+	public int getCid(int uid);
 }

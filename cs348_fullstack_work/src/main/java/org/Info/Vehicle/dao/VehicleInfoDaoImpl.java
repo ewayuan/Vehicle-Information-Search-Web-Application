@@ -2,14 +2,11 @@ package org.Info.Vehicle.dao;
 
 import java.util.List;
 
-import javax.management.Query;
-
 import org.Info.Vehicle.model.VehicleInfo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.Info.Vehicle.dao.MakeDao;
 
 @Repository
 public class VehicleInfoDaoImpl implements VehicleInfoDao{
@@ -86,5 +83,14 @@ public class VehicleInfoDaoImpl implements VehicleInfoDao{
 		String searchQ = "FROM VehicleInfo WHERE mid = " + mid;  
 		List<VehicleInfo>  infoList = session.createQuery(searchQ).list();
 		return infoList;
+	}
+	
+	public List<VehicleInfo> uidFindVehicleInfos(int cid) {
+		Session session = this.sessionFactory.getCurrentSession();
+//		String searchSQLquery =  "SELECT * FROM VehicleInfo as v WHERE v.vid IN (SELECT vid FROM Cart c where c.cid = "+cid+")";
+		String searchSQLquery =  "select r.Year,r.mid,r.model,r.VehicleClass,r.EngineSize,r.Cylinders,r.FuelType,r.City,r.Hwy,r.Comb,r.CO2Rating,r.SmogRating,r.vid,make_name from (select v.Year,v.mid,v.model,v.VehicleClass,v.EngineSize,v.Cylinders,v.FuelType,v.City,v.Hwy,v.Comb,v.CO2Rating,v.SmogRating,v.vid,make_name from VehicleInfo v left join Make m on v.mid = m.mid) as r left join Cart c on r.vid = c.vid where c.cid ="
+				+cid;
+		List<VehicleInfo>  findList = session.createSQLQuery(searchSQLquery).addEntity(VehicleInfo.class).list();
+		return findList;
 	}
 }

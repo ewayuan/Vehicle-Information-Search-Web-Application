@@ -32,7 +32,7 @@ public class UserService {
 	}
 	
 	@Transactional
-	public boolean checkUserValid(String username, String password) {
+	public int checkUserValid(String username, String password) {
 		return userDao.checkUserValid(username, password);
 	}
 	
