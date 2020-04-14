@@ -85,11 +85,11 @@ public class VehicleInfoDaoImpl implements VehicleInfoDao{
 		return infoList;
 	}
 	
-	public List<VehicleInfo> uidFindVehicleInfos(int cid) {
+	public List<VehicleInfo> uidFindVehicleInfos(int uid) {
 		Session session = this.sessionFactory.getCurrentSession();
 //		String searchSQLquery =  "SELECT * FROM VehicleInfo as v WHERE v.vid IN (SELECT vid FROM Cart c where c.cid = "+cid+")";
 		String searchSQLquery =  "select r.Year,r.mid,r.model,r.VehicleClass,r.EngineSize,r.Cylinders,r.FuelType,r.City,r.Hwy,r.Comb,r.CO2Rating,r.SmogRating,r.vid,make_name from (select v.Year,v.mid,v.model,v.VehicleClass,v.EngineSize,v.Cylinders,v.FuelType,v.City,v.Hwy,v.Comb,v.CO2Rating,v.SmogRating,v.vid,make_name from VehicleInfo v left join Make m on v.mid = m.mid) as r left join Cart c on r.vid = c.vid where c.cid ="
-				+cid;
+				+"(select cid from Buyer where uid = " + uid +")";
 		List<VehicleInfo>  findList = session.createSQLQuery(searchSQLquery).addEntity(VehicleInfo.class).list();
 		return findList;
 	}
