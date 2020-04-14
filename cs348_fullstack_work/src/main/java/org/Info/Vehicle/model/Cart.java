@@ -17,7 +17,6 @@ public class Cart{
 
 	@Id
 	@Column(name="cid")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int cid; 
 
 	@Column(name="vid")
@@ -37,7 +36,7 @@ public class Cart{
 		return this.cid;
 	}
 	
-	public void setUid(int cid) {
+	public void setCid(int cid) {
 		this.cid = cid;
 	}
 

@@ -42,4 +42,16 @@ public class CartService {
 	public void deleteCart(int id) {
 		cartDao.deleteCart(id);
 	}
+
+	@Transactional
+	public void uidAddCids(List<Integer> vidlist, int cid) {
+		cartDao.uidAddCids(vidlist, cid);
+		
+	}
+
+	@Transactional
+	public void uidDelCids(List<Integer> vidlist, int cid) {
+		cartDao.uidDelCids(vidlist, cid);
+		
+	}
 }

@@ -3,6 +3,7 @@ package org.Info.Vehicle.controller;
 import java.util.List;
 
 import org.Info.Vehicle.model.Cart;
+import org.Info.Vehicle.service.BuyerService;
 import org.Info.Vehicle.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,6 +19,10 @@ public class CartController {
 
 	@Autowired
 	CartService CartService;
+	
+	@Autowired
+	BuyerService buyerService;
+	
 
 	@RequestMapping(value = "/getAllCart", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Cart> getAllCart(Model model) {
@@ -48,5 +54,17 @@ public class CartController {
 		CartService.deleteCart(id);
 	}	
 	
+
+	@RequestMapping(value = "/uidAddCids", method = RequestMethod.POST)
+	public void uidAddCids(@RequestParam(name = "vid") List<Integer> vidlist, @RequestParam(name = "uid") int uid) {
+		int cid = buyerService.getCid(uid);
+        CartService.uidAddCids(vidlist, cid);
+    }
+	
+	@RequestMapping(value = "/uidDelCids", method = RequestMethod.POST)
+	public void uidDelCids(@RequestParam(name = "vid") List<Integer> vidlist, @RequestParam(name = "uid") int uid) {
+		int cid = buyerService.getCid(uid);
+        CartService.uidDelCids(vidlist, cid);
+    }
 	
 }

@@ -14,4 +14,13 @@ public interface CartDao {
 	public void updateCart(Cart cart) ;
 
 	public void deleteCart(int id) ;
+
+	public void insertVid(int vid, int cid);
+	
+	public void deleteVid(int vid, int cid);
+	
+	public void uidAddCids(List<Integer> vidlist, int cid);
+	
+	public void uidDelCids(List<Integer> vidlist, int cid);
+
 }
