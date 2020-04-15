@@ -62,7 +62,7 @@ public class CartController {
     }
 	
 	@RequestMapping(value = "/uidDelCids", method = RequestMethod.POST)
-	public void uidDelCids(@RequestParam(name = "vid") List<Integer> vidlist, @RequestParam(name = "uid") int uid) {
+	public void uidDelCids(@RequestParam(name = "vid", required=false) List<Integer> vidlist, @RequestParam(name = "uid") int uid) {
 		int cid = buyerService.getCid(uid);
         CartService.uidDelCids(vidlist, cid);
     }

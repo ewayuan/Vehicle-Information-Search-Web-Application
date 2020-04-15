@@ -170,8 +170,11 @@ angular.module("myApp")
 	    $scope.addToCart = function() {
 	    	var selectedID = [];
 	    	var selectedItems = [];
+	    	var formData = new FormData();
+	    	
 	    	$.each($("input:checked"), function(){
                 selectedID.push($(this).val());
+                formData.append("vid", $(this).val());
             });
 
             for(var i = 0; i < $scope.resultList.length; i++) {
@@ -182,8 +185,49 @@ angular.module("myApp")
             		selectedItems.push(car);
             	}
             }
+            
+			formData.append("uid", $rootScope.userID);
+			var a = formData.getAll('vid');
+			var b = formData.getAll('uid');
+			for (var i = 0; i < a.length; i++) {
+				console.log(a[i]);
+			} 
 
-            $rootScope.selectedItems = $rootScope.selectedItems.concat(selectedItems) ;
+			var jsonData = {
+				uid: 4,
+ 				vidList: [25, 26, 27]
+			}
+	   	
+	   		/*$http({
+	            method : "POST",
+	            url : '/uidAddCids/',
+	            data: jsonData
+	            /*headers : {
+	                'Content-Type' : 'multipart/form-data'
+	            }
+	        }).then(function successCallback(response) {
+	            var resultList = response.data;
+	            console.log("addToCart Success");
+	        }, function errorCallback(response) {
+	            console.log("ERROR: addToCart");
+	        });
+
+	        $.ajax({
+
+            url: "/uidAddCids/",
+            type: "POST",
+            processData: false,
+           	data: formData,         
+            success: function (r) {
+                alert(r + " record(s) inserted.");
+            }
+        });*/
+
+	        var request = new XMLHttpRequest();
+			request.open("POST", "/uidAddCids/");
+			request.send(formData);
+
+	        $rootScope.selectedItems = $rootScope.selectedItems.concat(selectedItems) ;
             $window.location.href = 'new/index.html/#cart';
 	    }
 

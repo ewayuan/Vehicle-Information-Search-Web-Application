@@ -7,8 +7,10 @@ angular.module("myApp")
 
 		$scope.deleteItem = function() {
 			var selectedID = [];
+			var formData = new FormData();
 	    	$.each($("input:checked"), function(){
                 selectedID.push($(this).val());
+                formData.append("vid", $(this).val());
             });
 
             for(var i = 0; i < selectedID.length; i++) {
@@ -16,6 +18,11 @@ angular.module("myApp")
             	var index = $scope.itemList.indexOf(item);
             	$scope.itemList.splice(index);
             }
+
+            formData.append("uid", $rootScope.userID);
+            var request = new XMLHttpRequest();
+			request.open("POST", "/uidDelCids/");
+			request.send(formData);
             $rootScope.selectedItems = $scope.itemList;
             //$window.location.href = 'new/index.html/#cart';
 	    }
